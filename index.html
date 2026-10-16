@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mohamed Ansar · Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ===== Colours: change these 3 + paper/ink to restyle everything ===== */
+:root{--red:#e8412f;--sun:#ffc72c;--teal:#1f8a83;--ink:#17141a;--paper:#f6f3ea;
+--dots:radial-gradient(circle,rgba(23,20,26,.22) 1.4px,transparent 1.7px) 0 0/9px 9px;
+--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+html.intro{overflow:hidden}
+body{font:700 1.05rem/1.55 "Comic Neue",system-ui,sans-serif;color:var(--ink);background:var(--ink)}
+h1,h2,h3,.bang{font-family:Bangers,Impact,sans-serif;font-weight:400;letter-spacing:.03em;line-height:.95}
+a{color:inherit}
+:focus-visible{outline:4px solid var(--teal);outline-offset:3px}
+/* intro */
+#intro{position:fixed;inset:0;z-index:1;background:var(--red) var(--dots);display:grid;place-items:center}
+#intro svg{width:min(60vw,260px);animation:pop .5s var(--ease) both}
+@keyframes pop{from{transform:scale(.2) rotate(-14deg);opacity:0}to{transform:none;opacity:1}}
+#page{position:relative;z-index:2;background:var(--paper);overflow-x:clip}
+html.intro #page{clip-path:circle(0 at 50vw 50vh);animation:reveal 1.5s .7s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes reveal{to{clip-path:circle(150vmax at 50vw 50vh)}}
+#skip{position:fixed;z-index:9;right:12px;bottom:12px;font:inherit;border:3px solid var(--ink);background:var(--sun);padding:.4rem .9rem;box-shadow:4px 4px 0 var(--ink);cursor:pointer}
+#skip:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+/* shared comic parts */
+.wrap{max-width:1100px;margin:0 auto;padding:4.5rem 1.1rem}
+.panel{border:4px solid var(--ink);background:#fff;padding:1.3rem;box-shadow:8px 8px 0 var(--ink);position:relative}
+.dots{background:var(--dots),var(--sun)}
+.cap{display:inline-block;background:var(--sun);border:3px solid var(--ink);padding:.15rem .7rem;font-size:.9rem;transform:rotate(-1.5deg);margin-bottom:.9rem}
+h2{font-size:clamp(2.8rem,10vw,5.2rem);margin-bottom:1.6rem}
+h2 span{display:inline-block;background:var(--ink);color:var(--paper);padding:.05em .25em .1em;transform:rotate(-1.5deg)}
+.bubble{position:relative;background:#fff;border:4px solid var(--ink);border-radius:26px;padding:.8rem 1.1rem;display:inline-block;max-width:30rem}
+.bubble::after{content:"";position:absolute;left:34px;bottom:-24px;width:26px;height:24px;background:#fff;border-right:4px solid var(--ink);clip-path:polygon(0 0,100% 0,100% 100%);}
+.btn{display:inline-block;font:400 1.5rem Bangers;letter-spacing:.05em;text-decoration:none;padding:.5rem 1.4rem;border:4px solid var(--ink);box-shadow:5px 5px 0 var(--ink);background:var(--red);color:#fff;transition:transform .15s var(--ease),box-shadow .15s var(--ease)}
+.btn.alt{background:var(--sun);color:var(--ink)}
+.btn:hover{transform:translate(-2px,-2px) rotate(-1deg);box-shadow:8px 8px 0 var(--ink)}
+.btn:active{transform:translate(4px,4px);box-shadow:1px 1px 0 var(--ink)}
+/* landing */
+#top{min-height:100svh;display:grid;align-content:center;background:var(--dots),var(--paper);border-bottom:6px solid var(--ink)}
+#top .wrap{width:100%;padding-top:2.5rem;padding-bottom:2.5rem}
+.mono{width:104px;height:104px;cursor:pointer;display:block;background:none;border:0;padding:0;transform:rotate(-8deg);margin-bottom:.5rem}
+h1{font-size:clamp(4.2rem,23vw,12rem);-webkit-text-stroke:3px var(--ink);color:var(--sun);text-shadow:6px 6px 0 var(--ink)}
+h1 .l2{display:block;color:var(--red);margin-left:.5em}
+.hero-row{display:flex;flex-wrap:wrap;gap:1.8rem 3rem;align-items:flex-end;margin-top:1.6rem}
+.tag{font-size:1.35rem;max-width:20rem}
+.now{margin-top:2rem}
+.ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.6rem}
+/* about */
+.cols{display:grid;gap:2rem}
+.about p{margin-bottom:1rem;max-width:36rem}
+.about .panel:nth-child(2){background:var(--teal);color:#fff;transform:rotate(1.2deg)}
+/* skills */
+#skills{background:var(--ink);color:var(--paper);border-block:6px solid var(--ink)}
+#skills h2 span{background:var(--sun);color:var(--ink)}
+.lvls{display:grid;gap:1.6rem}
+.lvl{border:4px solid var(--paper);padding:1.2rem}
+.lvl h3{font-size:2.3rem;color:var(--sun)}
+.lvl ul{list-style:none;padding:0;margin-top:.6rem;display:flex;flex-wrap:wrap;gap:.5rem}
+.lvl li{background:var(--paper);color:var(--ink);padding:.1rem .7rem;border-radius:99px}
+.lvl:nth-child(2){transform:rotate(-1deg)}
+/* journey */
+.jgrid{display:grid;gap:1.8rem}
+.jgrid .panel h3{font-size:2.4rem;margin-bottom:.4rem}
+.jgrid .panel:nth-child(1){background:var(--sun)}
+.jgrid .panel:nth-child(3){background:var(--red);color:#fff}
+/* flip cards */
+#beyond{background:var(--dots),var(--sun);border-block:6px solid var(--ink)}
+.cards{display:grid;gap:1.6rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.flip{perspective:900px;height:220px;background:none;border:0;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.flip i{display:block;position:relative;height:100%;transition:transform .6s var(--ease);transform-style:preserve-3d;font-style:normal}
+.flip[aria-pressed=true] i{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border:4px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:1.1rem;display:flex;flex-direction:column;justify-content:space-between;background:#fff}
+.face b{font:400 2.3rem/1 Bangers}
+.back{transform:rotateY(180deg);background:var(--paper)}
+.back::before{content:"";position:absolute;inset:0;background:var(--dots);opacity:.6;pointer-events:none}
+.flip:nth-child(even) .front{background:var(--teal);color:#fff}
+.flip:nth-child(3n) .front{background:var(--red);color:#fff}
+.hint{font-size:.85rem}
+/* contact */
+.links{display:grid;gap:1.2rem;margin-top:1rem}
+.links a{font:400 2.1rem Bangers;text-decoration:none;border:4px solid var(--ink);padding:.6rem 1rem;box-shadow:6px 6px 0 var(--ink);background:#fff;display:flex;justify-content:space-between;transition:transform .15s var(--ease)}
+.links a:hover{transform:translate(-3px,-3px) rotate(-.8deg)}
+.links small{font:700 1rem "Comic Neue";align-self:center}
+footer{background:var(--ink);color:var(--sun);text-align:right;padding:1.6rem 1.1rem;font:400 2rem Bangers}
+/* easter egg */
+#pow{position:fixed;inset:0;z-index:20;display:none;place-items:center;background:rgba(23,20,26,.82);cursor:pointer}
+#pow.on{display:grid}
+#pow svg{width:min(88vw,520px);animation:pop .4s var(--ease) both}
+@media(min-width:760px){
+.wrap{padding:6rem 2rem}
+.mono{width:140px;height:140px}
+.cols{grid-template-columns:1.4fr 1fr;align-items:start}
+.lvls,.jgrid{grid-template-columns:repeat(3,1fr)}
+.jgrid .panel:nth-child(2){margin-top:2.5rem}
+.links{grid-template-columns:repeat(3,1fr)}
+.links a{flex-direction:column;gap:.4rem}
+}
+@media(prefers-reduced-motion:reduce){
+*{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<div id="intro" aria-hidden="true">
+<svg viewBox="0 0 200 200"><polygon points="100,4 120,48 166,26 154,76 198,90 158,118 182,164 132,156 120,198 98,160 62,190 62,146 14,150 44,110 6,84 52,70 38,24 82,46" fill="#ffc72c" stroke="#17141a" stroke-width="6" stroke-linejoin="round"/><text x="100" y="124" text-anchor="middle" font-family="Bangers" font-size="76" fill="#17141a">MA</text></svg>
+</div>
+<button id="skip" type="button">Skip</button>
+
+<div id="page">
+<header id="top">
+<div class="wrap">
+<button class="mono" id="mono" type="button" aria-label="Monogram MA">
+<svg viewBox="0 0 200 200"><polygon points="100,4 120,48 166,26 154,76 198,90 158,118 182,164 132,156 120,198 98,160 62,190 62,146 14,150 44,110 6,84 52,70 38,24 82,46" fill="#e8412f" stroke="#17141a" stroke-width="6" stroke-linejoin="round"/><text x="100" y="124" text-anchor="middle" font-family="Bangers" font-size="76" fill="#ffc72c" stroke="#17141a" stroke-width="3" paint-order="stroke">MA</text></svg>
+</button>
+<h1>Mohamed <span class="l2">Ansar</span></h1>
+<div class="hero-row">
+<p class="tag"><!-- EDIT: your tagline -->[Your one-line tagline goes here]</p>
+</div>
+<div class="now bubble"><b>Currently…</b> <!-- EDIT -->[what you're learning or building right now]</div>
+<div class="ctas"><a class="btn" href="#about">Explore</a><a class="btn alt" href="#contact">Say hi</a></div>
+</div>
+</header>
+
+<section id="about"><div class="wrap">
+<h2><span>Origin story</span></h2>
+<div class="cols about">
+<div class="panel">
+<p class="cap">Issue #1</p>
+<!-- EDIT: write in first person, from your Me-Map answers -->
+<p>I'm Mohamed Ansar, a first-year B.Tech student in Information Technology.</p>
+<p>[Tell your story here: how you got curious about computers, what pulled you into IT, and what you hope to do with it.]</p>
+<p>[One more paragraph: what a good day of learning looks like for you.]</p>
+</div>
+<div class="panel"><p class="cap">Narrator</p><p>[A short line in your own voice, the thing you'd say if someone asked "so, who are you?"]</p></div>
+</div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+<h2><span>Power levels</span></h2>
+<div class="lvls">
+<div class="lvl"><h3>Comfortable</h3><ul><li>[skill]</li><li>[skill]</li></ul></div>
+<div class="lvl"><h3>Learning</h3><ul><li>[skill]</li><li>[skill]</li><li>[skill]</li></ul></div>
+<div class="lvl"><h3>Just starting</h3><ul><li>[skill]</li><li>[skill]</li></ul></div>
+</div>
+</div></section>
+
+<section id="journey"><div class="wrap">
+<h2><span>The story so far</span></h2>
+<div class="jgrid">
+<div class="panel"><h3>Made</h3><p>[A project, even a small one: what it does and what you figured out building it.]</p></div>
+<div class="panel"><h3>Learning</h3><p>[What you're studying now, and what part is tricky.]</p></div>
+<div class="panel"><h3>Next issue</h3><p>[What you want to build, and why it matters to you.]</p></div>
+</div>
+</div></section>
+
+<section id="beyond"><div class="wrap">
+<h2><span>Off the page</span></h2>
+<p class="bubble" style="margin-bottom:2.2rem">Tap a card to flip it.</p>
+<div class="cards">
+<button class="flip" aria-pressed="false"><i><span class="face front"><b>Hobby #1</b><span class="hint">Tap to flip</span></span><span class="face back"><span>[A fun fact about this hobby.]</span></span></i></button>
+<button class="flip" aria-pressed="false"><i><span class="face front"><b>Hobby #2</b><span class="hint">Tap to flip</span></span><span class="face back"><span>[A fun fact about this hobby.]</span></span></i></button>
+<button class="flip" aria-pressed="false"><i><span class="face front"><b>Fun fact</b><span class="hint">Tap to flip</span></span><span class="face back"><span>[Something people are surprised to learn about you.]</span></span></i></button>
+<button class="flip" aria-pressed="false"><i><span class="face front"><b>Favourite</b><span class="hint">Tap to flip</span></span><span class="face back"><span>[A favourite book, game, food or place, and why.]</span></span></i></button>
+</div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+<h2><span>Say hi</span></h2>
+<div class="bubble">Got an idea or a question? Send it over.</div>
+<div class="links" style="margin-top:2.6rem">
+<!-- EDIT: replace the href values -->
+<a href="mailto:you@example.com">Email <small>you@example.com</small></a>
+<a href="https://www.linkedin.com/in/your-name" target="_blank" rel="noopener">LinkedIn <small>/in/your-name</small></a>
+<a href="https://github.com/your-name" target="_blank" rel="noopener">GitHub <small>/your-name</small></a>
+</div>
+</div></section>
+<footer>To be continued…</footer>
+</div>
+
+<div id="pow" role="dialog" aria-label="Easter egg"><svg viewBox="0 0 300 260"><polygon points="150,6 176,60 236,28 228,92 292,102 240,140 284,196 216,190 206,252 150,208 94,252 84,190 16,196 60,140 8,102 72,92 64,28 124,60" fill="#ffc72c" stroke="#17141a" stroke-width="7" stroke-linejoin="round"/><text x="150" y="150" text-anchor="middle" font-family="Bangers" font-size="84" fill="#e8412f" stroke="#17141a" stroke-width="6" paint-order="stroke">POW!</text><text x="150" y="182" text-anchor="middle" font-family="Comic Neue" font-weight="700" font-size="15" fill="#17141a">You found it. Tap to close.</text></svg></div>
+
+<script>
+(function(){
+var d=document,h=d.documentElement,page=d.getElementById('page');
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function end(){h.classList.remove('intro');d.getElementById('intro').style.display='none';d.getElementById('skip').style.display='none';page.style.clipPath='none'}
+h.classList.add('intro');
+if(reduce){end()}else{
+page.addEventListener('animationend',end,{once:true});
+setTimeout(end,2400);
+d.getElementById('skip').onclick=end;
+}
+d.querySelectorAll('.flip').forEach(function(b){b.onclick=function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')!=='true')}});
+// Easter egg: click the monogram 5 times, or type "pow"
+var pow=d.getElementById('pow'),n=0,buf='';
+function show(){pow.classList.add('on')}
+d.getElementById('mono').onclick=function(){if(++n>=5){n=0;show()}};
+pow.onclick=function(){pow.classList.remove('on')};
+d.addEventListener('keydown',function(e){buf=(buf+e.key).slice(-3).toLowerCase();if(buf==='pow')show();if(e.key==='Escape')pow.classList.remove('on')});
+})();
+</script>
+</body>
+</html>
